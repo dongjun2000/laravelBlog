@@ -13,3 +13,4 @@
 
 Route::get('/', 'WelcomeController@home');
 
+Route::resource('user', 'UserController');
