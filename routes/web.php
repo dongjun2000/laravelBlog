@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'WelcomeController@home');
+Route::get('/', 'WelcomeController@home')->name('home');
 
 Route::resource('user', 'UserController');

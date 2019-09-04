@@ -18,7 +18,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 用户注册表单
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,20 +28,29 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 用户注册操作
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        // 表单验证
         $data = $this->validate($request, [
             'name' => 'required|min:3|max:20',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:5|confirmed'
         ]);
+        
+        $data['password'] = bcrypt($data['password']);
 
-        dd($data);
+        // 添加用户
+        User::create($data);
+
+        // 用户登录
+       \Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+
+       return redirect()->route('home');
     }
 
     /**
