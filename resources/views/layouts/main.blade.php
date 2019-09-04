@@ -49,6 +49,7 @@
 </div>
 
 <div class="container">
+    @include('layouts._error')
 
     @yield('content')
 

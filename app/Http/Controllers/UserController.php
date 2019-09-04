@@ -38,7 +38,7 @@ class UserController extends Controller
         $data = $this->validate($request, [
             'name' => 'required|min:3|max:20',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed'
+            'password' => 'required|min:5|confirmed'
         ]);
 
         dd($data);
