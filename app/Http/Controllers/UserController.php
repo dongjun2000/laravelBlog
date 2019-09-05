@@ -84,6 +84,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         return view('user.edit', compact('user'));
     }
 
@@ -96,6 +98,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $this->validate($request, [
             'name' => 'nullable|min:2|max:20',
             'password' => 'nullable|min:5|confirmed|required_without:name'
