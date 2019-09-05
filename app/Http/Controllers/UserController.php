@@ -156,7 +156,8 @@ class UserController extends Controller
                 $user->email_active = true;
                 $user->email_token = str_random(20);
                 $user->save();
-                return redirect()->route('login')->with('success', '账号激活成功');
+                \Auth::login($user);
+                return redirect()->route('home')->with('success', '账号激活成功');
             }
         }
 
