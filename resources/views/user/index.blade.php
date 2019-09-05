@@ -22,8 +22,9 @@
                         <td>{{$user['name']}}</td>
                         <td>{{$user['email']}}</td>
                         <td>
-                            <a href="{{route('user.show', $user)}}" class="btn btn-success">查看</a>
-                            <a href="" class="btn btn-danger">删除</a>
+                            <a href="{{route('user.show', $user)}}" class="btn btn-success btn-sm">查看</a>
+                            <a href="{{route('user.edit', $user)}}" class="btn btn-success btn-sm">修改</a>
+                            <a href="" class="btn btn-danger btn-sm">删除</a>
                         </td>
                     </tr>
                 @endforeach
