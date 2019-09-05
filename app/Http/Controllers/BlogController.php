@@ -91,6 +91,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return back()->with('success', '删除成功！');
     }
 }
