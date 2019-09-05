@@ -12,7 +12,7 @@
                     <th>ID</th>
                     <th>昵称</th>
                     <th>邮箱</th>
-                    <th>操作</th>
+                    <th width="200px">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,12 +22,14 @@
                         <td>{{$user['name']}}</td>
                         <td>{{$user['email']}}</td>
                         <td>
-                            <a href="{{route('user.show', $user)}}" class="btn btn-success btn-sm">查看</a>
-
+                            <a href="{{route('user.show', $user)}}" class="btn btn-success btn-sm float-left m-1">查看</a>
                             @can('update', $user)
-                                <a href="{{route('user.edit', $user)}}" class="btn btn-primary btn-sm">修改</a>
+                                <a href="{{route('user.edit', $user)}}" class="btn btn-primary btn-sm float-left m-1">修改</a>
                             @endcan
-                            <a href="" class="btn btn-danger btn-sm">删除</a>
+                            <form onsubmit="return confirm('确定删除吗？')" class="float-left m-1" action="{{route('user.destroy', $user)}}" method="post">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

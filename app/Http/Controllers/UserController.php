@@ -121,13 +121,14 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除用户
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back()->with('success', '删除成功！');
     }
 }
