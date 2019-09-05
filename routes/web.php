@@ -14,3 +14,5 @@
 Route::get('/', 'WelcomeController@home')->name('home');
 
 Route::resource('user', 'UserController');
+
+Route::get('logout', 'LoginController@logout')->name('logout');

@@ -42,7 +42,7 @@
             </form>
             <div class="my-2 my-lg-0">
                 @auth
-                    <a href="" class="btn btn-danger">退出</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger">退出</a>
                 @else
                     <a href="" class="btn btn-success">登录</a>
                     <a href="{{ route('user.create') }}" class="btn btn-danger">注册</a>
