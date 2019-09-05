@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * 一对多
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

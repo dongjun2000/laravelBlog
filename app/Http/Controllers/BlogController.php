@@ -24,7 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        // 使用
     }
 
     /**
@@ -35,7 +35,13 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request, [
+            'content' => 'required|min:3|max:164'
+        ]);
+
+        \Auth::user()->blogs()->create($data);
+
+        return back()->with('success', '发表成功！');
     }
 
     /**
