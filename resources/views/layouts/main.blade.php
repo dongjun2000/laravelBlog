@@ -51,6 +51,8 @@
 <div class="container">
     @include('layouts._error')
 
+    @include('layouts._message')
+
     @yield('content')
 
 </div>
@@ -58,6 +60,16 @@
 <script src="{{asset('js/app.js')}}"></script>
 
 @yield('script')
+
+<script>
+    // 3秒后自动关闭系统消息提示框
+    if ($('.alert').length > 0) {
+        setTimeout(function() {
+            console.log(111)
+            $('.alert').alert('close');
+        }, 3000);
+    }
+</script>
 
 </body>
 </html>

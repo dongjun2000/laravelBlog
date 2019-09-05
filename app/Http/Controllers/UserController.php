@@ -50,7 +50,7 @@ class UserController extends Controller
         // 用户登录
        \Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
-       return redirect()->route('home');
+       return redirect()->route('home')->with('success', '注册成功！并已为你自动登录~~~');
     }
 
     /**
