@@ -11,10 +11,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::create([
-            'name' => 'lisi',
-            'email' => 'list@qq.com',
-            'password' => bcrypt('admin')
-        ]);
+        factory(\App\User::class, 100)->create();
+        $user = \App\User::find(1);
+        $user->name = '董俊';
+        $user->email = '418826102@qq.com';
+        $user->password = bcrypt('admin');
+        $user->save();
     }
 }
