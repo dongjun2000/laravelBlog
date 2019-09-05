@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\Mail\RegMail;
 use App\User;
 use Illuminate\Http\Request;
@@ -77,7 +78,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', compact('user'));
+        $blogs = Blog::where('user_id', $user->id)->orderBy('id', 'DESC')->paginate(10);
+        return view('user.show', compact('user', 'blogs'));
     }
 
     /**

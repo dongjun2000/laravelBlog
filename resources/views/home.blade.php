@@ -47,7 +47,7 @@
                     <tr>
                         <td scope="row">{{$blog['id']}}</td>
                         <td>{{$blog['content']}}</td>
-                        <td>{{$blog->user->name}}</td>
+                        <td><a href="{{ route('user.show', $blog['user_id']) }}">{{$blog->user->name}}</a></td>
                         <td>
                             @can('delete', $blog)
                                 <form onsubmit="return confirm('确定要删除吗？')" action="{{ route('blog.destroy', $blog) }}"
