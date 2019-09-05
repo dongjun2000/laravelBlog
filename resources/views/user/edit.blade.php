@@ -1,15 +1,20 @@
 @extends('layouts.main')
 
 @section('content')
-    <form action="{{route('user.store')}}" method="post">
+    <form action="{{route('user.update', $user)}}" method="post">
+        @csrf @method('PUT')
         <div class="card">
             <div class="card-header">
                 修改个人信息
             </div>
             <div class="card-body">
                 <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input disabled type="text" class="form-control" name="email" id="email" value="{{$user['email']}}">
+                </div>
+                <div class="form-group">
                     <label for="name">昵称</label>
-                    <input disabled type="text" class="form-control" name="name" id="name" value="{{$user['name']}}">
+                    <input type="text" class="form-control" name="name" id="name" value="{{$user['name']}}">
                 </div>
                 <div class="form-group">
                     <label for="password">密码</label>

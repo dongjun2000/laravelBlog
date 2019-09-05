@@ -55,7 +55,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 用户个人主页
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
@@ -66,7 +66,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 修改个人信息页面
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
@@ -77,7 +77,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 修改个人信息操作
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
@@ -85,7 +85,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'name' => 'nullable|min:2|max:20',
+            'password' => 'nullable|min:5|confirmed|required_without:name'
+        ],[
+            'password.required_without' => '昵称与密码必须填写一项',
+        ], [
+            'name' => '昵称',
+        ]);
+
+        if ($request->name) {
+            $user->name = $request->name;
+        }
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
+
+        return back()->with('success', '修改成功！');
     }
 
     /**
