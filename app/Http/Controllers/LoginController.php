@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['loginForm', 'login']
+        ]);
+
+        $this->middleware('guest', [
+            'only' => ['loginForm', 'login']
+        ]);
+    }
+
     /**
      * 用户登录表单
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
