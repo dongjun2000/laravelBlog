@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomeController@home')->name('home');
 
 Route::resource('user', 'UserController');
+Route::resource('blog', 'BlogController');
 
 Route::get('login', 'LoginController@loginForm')->name('login');
 Route::post('login', 'LoginController@login')->name('login');
