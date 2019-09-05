@@ -22,3 +22,10 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 
 // 激活用户
 Route::get('confirmEmailToken/{token}', 'UserController@confirmEmailToken')->name('confirmEmailToken');
+
+// 重置密码
+Route::get('findPassword', 'PasswordController@findPasswordForm')->name('findPassword');
+Route::post('findPassword', 'PasswordController@findPassword')->name('findPassword');
+
+Route::get('resetPassword/{token}', 'PasswordController@resetPasswordForm')->name('resetPassword');
+Route::post('resetPassword', 'PasswordController@resetPassword')->name('resetPasswordStore');

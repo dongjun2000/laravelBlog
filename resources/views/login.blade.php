@@ -19,6 +19,7 @@
             </div>
             <div class="card-footer text-muted">
                 <button type="submit" class="btn btn-success">登录</button>
+                <a href="{{ route('findPassword') }}">找回密码</a>
             </div>
         </div>
     </form>
