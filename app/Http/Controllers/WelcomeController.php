@@ -12,8 +12,8 @@ class WelcomeController extends Controller
      */
     public function home()
     {
-        $user = \App\User::find(1);
-        \Mail::to($user)->send(new RegMail());
+//        $user = \App\User::find(1);
+//        \Mail::to($user)->send(new RegMail());
         return view('home');
     }
 }

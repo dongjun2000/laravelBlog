@@ -11,14 +11,16 @@ class RegMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +30,8 @@ class RegMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.reg');
+        return $this
+            ->markdown('email.reg')
+            ->subject(config('app.name')."-激活账号");
     }
 }

@@ -19,3 +19,6 @@ Route::get('login', 'LoginController@loginForm')->name('login');
 Route::post('login', 'LoginController@login')->name('login');
 
 Route::get('logout', 'LoginController@logout')->name('logout');
+
+// 激活用户
+Route::get('confirmEmailToken/{token}', 'UserController@confirmEmailToken')->name('confirmEmailToken');
