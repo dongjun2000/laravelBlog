@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
         $user->name = '董俊';
         $user->email = '418826102@qq.com';
         $user->password = bcrypt('admin');
-        $user->is_admin = 1;
+        $user->is_admin = true;
+        $user->email_active = true;
         $user->save();
     }
 }
