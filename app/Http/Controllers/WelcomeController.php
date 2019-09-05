@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegMail;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -11,6 +12,8 @@ class WelcomeController extends Controller
      */
     public function home()
     {
+        $user = \App\User::find(1);
+        \Mail::to($user)->send(new RegMail());
         return view('home');
     }
 }
