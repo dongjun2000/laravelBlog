@@ -24,12 +24,17 @@
                         <td>
                             <a href="{{route('user.show', $user)}}" class="btn btn-success btn-sm float-left m-1">查看</a>
                             @can('update', $user)
-                                <a href="{{route('user.edit', $user)}}" class="btn btn-primary btn-sm float-left m-1">修改</a>
+                                <a href="{{route('user.edit', $user)}}"
+                                   class="btn btn-primary btn-sm float-left m-1">修改</a>
                             @endcan
-                            <form onsubmit="return confirm('确定删除吗？')" class="float-left m-1" action="{{route('user.destroy', $user)}}" method="post">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">删除</button>
-                            </form>
+
+                            @can('delete', $user)
+                                <form onsubmit="return confirm('确定删除吗？')" class="float-left m-1"
+                                      action="{{route('user.destroy', $user)}}" method="post">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
