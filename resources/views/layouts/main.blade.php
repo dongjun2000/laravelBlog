@@ -44,7 +44,7 @@
                 @auth
                     <a href="{{ route('logout') }}" class="btn btn-danger">退出</a>
                 @else
-                    <a href="" class="btn btn-success">登录</a>
+                    <a href="{{ route('login') }}" class="btn btn-success">登录</a>
                     <a href="{{ route('user.create') }}" class="btn btn-danger">注册</a>
                 @endauth
             </div>
