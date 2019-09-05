@@ -49,10 +49,13 @@
                         <td>{{$blog['content']}}</td>
                         <td>{{$blog->user->name}}</td>
                         <td>
-                            <form onsubmit="return confirm('确定要删除吗？')" action="{{ route('blog.destroy', $blog) }}" method="post">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">删除</button>
-                            </form>
+                            @can('delete', $blog)
+                                <form onsubmit="return confirm('确定要删除吗？')" action="{{ route('blog.destroy', $blog) }}"
+                                      method="post">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
