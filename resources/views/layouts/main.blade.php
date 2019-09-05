@@ -42,10 +42,12 @@
             </form>
             <div class="my-2 my-lg-0">
                 @auth
-                    <a href="{{ route('logout') }}" class="btn btn-danger">退出</a>
+                    <a href="{{ route('user.show', auth()->user()) }}" class="btn btn-info btn-sm">我的主页</a>
+                    <a href="{{ route('user.edit', auth()->user()) }}" class="btn btn-success btn-sm">修改信息</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">退出</a>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-success">登录</a>
-                    <a href="{{ route('user.create') }}" class="btn btn-danger">注册</a>
+                    <a href="{{ route('login') }}" class="btn btn-success btn-sm">登录</a>
+                    <a href="{{ route('user.create') }}" class="btn btn-danger btn-sm">注册</a>
                 @endauth
             </div>
         </div>
