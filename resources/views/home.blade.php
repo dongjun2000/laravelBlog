@@ -27,4 +27,35 @@
             </div>
         </div>
     </form>
+
+    <div class="card mt-2">
+        <div class="card-header">
+            博客列表
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>博客</th>
+                    <th>用户</th>
+                    <th width="150px">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($blogs as $blog)
+                    <tr>
+                        <td scope="row">{{$blog['id']}}</td>
+                        <td>{{$blog['content']}}</td>
+                        <td>{{$blog->user->name}}</td>
+                        <td></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-muted">
+            {{ $blogs->links() }}
+        </div>
+    </div>
 @stop
