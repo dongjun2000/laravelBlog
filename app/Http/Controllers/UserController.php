@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 用户列表
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $users = User::orderBy('id', 'DESC')->paginate(10);
+        return view('user.index', compact('users'));
     }
 
     /**

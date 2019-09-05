@@ -24,7 +24,7 @@
                     <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">用户列表</a>
+                    <a class="nav-link" href="{{route('user.index')}}">用户列表</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
