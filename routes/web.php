@@ -30,3 +30,10 @@ Route::post('findPassword', 'PasswordController@findPassword')->name('findPasswo
 
 Route::get('resetPassword/{token}', 'PasswordController@resetPasswordForm')->name('resetPassword');
 Route::post('resetPassword', 'PasswordController@resetPassword')->name('resetPasswordStore');
+
+// 关注与取关
+Route::get('follow/{user}', 'UserController@follow')->name('userFollow');
+
+// 我的粉丝
+
+// 我关注的

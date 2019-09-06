@@ -71,6 +71,18 @@ class UserController extends Controller
     }
 
     /**
+     * 关注与取关
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function follow(User $user)
+    {
+        $user->followToggle(\Auth::user()->id);
+
+        return back();
+    }
+
+    /**
      * 用户个人主页
      *
      * @param  \App\User  $user
@@ -79,7 +91,14 @@ class UserController extends Controller
     public function show(User $user)
     {
         $blogs = Blog::where('user_id', $user->id)->orderBy('id', 'DESC')->paginate(10);
-        return view('user.show', compact('user', 'blogs'));
+
+        // 关注状态
+        $followStatus = '关注我';
+        if (\Auth::check()) {
+            $followStatus = $user->isFollow(\Auth::user()->id) ? '取消关注' : '关注我';
+        }
+
+        return view('user.show', compact('user', 'blogs', 'followStatus'));
     }
 
     /**

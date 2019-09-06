@@ -4,6 +4,11 @@
     <div class="card">
         <div class="card-header">
             <h1 class="text-center">{{$user['name']}}</h1>
+            <div class="text-center">
+                <a href="" class="btn btn-danger">我的关注:{{$user->follows()->count()}}</a>
+                <a href="" class="btn btn-dark">我的粉丝:{{$user->fans()->count()}}</a>
+                <a class="btn btn-success" href="{{ route('userFollow', $user) }}" role="button">{{ $followStatus }}</a>
+            </div>
         </div>
         <div class="card-body">
             <table class="table">
