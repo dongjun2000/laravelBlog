@@ -34,6 +34,8 @@ Route::post('resetPassword', 'PasswordController@resetPassword')->name('resetPas
 // 关注与取关
 Route::get('follow/{user}', 'UserController@follow')->name('userFollow');
 
-// 我的粉丝
+// 我的粉丝列表
+Route::get('user/{user}/fans', 'FollowController@fans')->name('fans');
 
-// 我关注的
+// 我关注的列表
+Route::get('user/{user}/follows', 'FollowController@follows')->name('follows');
