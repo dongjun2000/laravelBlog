@@ -9,6 +9,7 @@
         <title>{{config('app.name')}}</title>
     @endif
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('plugin/pjax/pjax.css')}}">
 </head>
 <body>
 
@@ -42,19 +43,34 @@
             </form>
             <div class="my-2 my-lg-0">
                 @auth
-                    <a href="{{ route('user.show', auth()->user()) }}" class="btn btn-info btn-sm">我的主页</a>
-                    <a href="{{ route('user.edit', auth()->user()) }}" class="btn btn-success btn-sm">修改信息</a>
-                    <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">退出</a>
+                    <a href="{{ route('user.show', auth()->user()) }}" class="btn btn-info btn-sm float-left m-1">我的主页</a>
+                    <a href="{{ route('user.edit', auth()->user()) }}" class="btn btn-success btn-sm float-left m-1">修改信息</a>
+                    <form class="float-left" action="{{ route('logout') }}" method="post">
+                        @csrf
+                    <button type="submit" href="{{ route('logout') }}" class="btn btn-danger btn-sm m-1">退出</button>
+                    </form>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-success btn-sm">登录</a>
-                    <a href="{{ route('user.create') }}" class="btn btn-danger btn-sm">注册</a>
+                    <a href="{{ route('login') }}" class="btn btn-success btn-sm float-left m-1">登录</a>
+                    <a href="{{ route('user.create') }}" class="btn btn-danger btn-sm float-left m-1">注册</a>
                 @endauth
             </div>
         </div>
     </nav>
 </div>
 
-<div class="container">
+<div class="container" id="pjax-container">
+    <!--pjax加载动画-->
+    <div id="loading">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <!--pjax加载动画 结束-->
+
     @include('layouts._error')
 
     @include('layouts._message')
@@ -64,6 +80,8 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<script src="{{asset('plugin/pjax/pjax.js')}}"></script>
 
 @yield('script')
 
