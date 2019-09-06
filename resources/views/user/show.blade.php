@@ -16,7 +16,6 @@
                 <tr>
                     <th>ID</th>
                     <th>博客</th>
-                    <th width="100px">用户</th>
                     <th width="150px">操作</th>
                 </tr>
                 </thead>
@@ -25,7 +24,6 @@
                     <tr>
                         <td scope="row">{{$blog['id']}}</td>
                         <td>{{$blog['content']}}</td>
-                        <td><a href="{{ route('user.show', $blog['user_id']) }}">{{$user['name']}}</a></td>
                         <td>
                             @can('delete', $blog)
                                 <form onsubmit="return confirm('确定要删除吗？')" action="{{ route('blog.destroy', $blog) }}"
